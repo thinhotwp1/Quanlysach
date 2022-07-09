@@ -28,6 +28,7 @@ public class BookManager {
         Author author2 = new Author("Chau",20,"Chou",16,"Bac Tu Liem");
         authorList.add(author2);
         
+        // Tao ArrayList sach
         ArrayList<Book> bookList = new ArrayList<>();
         Book book1 = new Book("Duong mot chieu",21,"Na");
         bookList.add(book1);
@@ -50,23 +51,23 @@ public class BookManager {
             
             chon = Integer.parseInt(sc.nextLine());
             switch(chon){
-                case 1:
+                case 1: //Nhap so luong n sach can them va them sach
                     int n;
                     System.out.println("Nhap so luong sach can them: ");
                     n=Integer.parseInt(sc.nextLine());
                     for(int i=0;i<n;i++){
-                        Book book = new Book();
-                        int check=0;
-                        book.inputBook();
-                        bookList.add(book);
+                        Book book = new Book(); // Goi doi tuong sach moi
+                        int check=0;            // Goi bien check xem da co tac gia nay hay chua
+                        book.inputBook();       // Goi ham them sach
+                        bookList.add(book);     // Them sach moi tao vao bookList
                         
                         for(Author author:authorList){
-                            if(book.getNickname().equalsIgnoreCase(author.getSignature())){
+                            if(book.getNickname().equalsIgnoreCase(author.getSignature())){//Check but danh tac gia da ton tai chua 
                                 check=1;
                             }
                         }
                         
-                        if(check==0){
+                        if(check==0){ // Neu tac gia moi thi them tac gia moi
                             System.out.println("Nhap thong tin tac gia moi! ");
                             Author author = new Author();
                             author.inputAuthor();
@@ -76,14 +77,14 @@ public class BookManager {
                     }
                     break;
                 case 2:
-                    System.out.println("List cac quyen sach la:");
-                    for(Book book:bookList){
+                    System.out.println("List cac quyen sach la:"); // Show list cac quyen sach
+                    for(Book book:bookList){    
                         book.outputBook();
                         }
                     break;
                 case 3:
                     int m;
-                    System.out.println("Nhap so luong tac gia can them: ");
+                    System.out.println("Nhap so luong tac gia can them: "); // Nhap m tac gia can them va goi ham them tac gia
                     m=Integer.parseInt(sc.nextLine());
                     for(int i=0;i<m;i++){
                         Author author = new Author();
@@ -92,7 +93,7 @@ public class BookManager {
                     }
                     break;    
                 case 4:
-                    System.out.println("Danh sach tac gia la:");
+                    System.out.println("Danh sach tac gia la:");    // Show danh sach tac gia
                     for(Author author:authorList){
                         author.outputAuthor();
                     }
@@ -112,7 +113,11 @@ public class BookManager {
                                     book.outputBook();
                                 }
                             }
+                            check1=1;
                         }
+                    }
+                    if(check1==0){
+                        System.out.println("Khong tim thay but danh nay !");
                     }
                     break;    
                 case 6:
@@ -123,10 +128,7 @@ public class BookManager {
                     System.out.println("Nhap lai di bro!");
                     break;
             }
-        }
-        
-        
-        
+        }    
     }
    
 }
